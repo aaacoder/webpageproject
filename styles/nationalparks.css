@@ -1,0 +1,20 @@
+body {
+    background-color: aliceblue;
+    width: 600px;
+    margin: 0 auto;
+}
+h1 {
+    font-family: Ubuntu;
+    line-height: 0.25;
+    font-size: 60px;
+    text-align: center;
+}
+p {
+    font-family: Shadows Into Light;
+    font-size: 20px;
+    text-align: center;
+}
+.name {
+    font-familY: Khand;
+    font-size: 20px;
+}

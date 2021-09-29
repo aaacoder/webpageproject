@@ -1,0 +1,45 @@
+/** 
+Precedence: Id > Class > Tag 
+If 2 rules have equal specificity, later ones take precedence. 
+*/
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    color: lightcoral;
+    margin: 0;
+    padding: 20px 0;
+}
+p, li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 0.5px;
+    color: greenyellow;
+}
+li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: lightskyblue;
+}
+.bold {
+    font-weight: bold;
+}
+li.bold {
+    font-style: italic;
+}
+p.bold {
+    text-decoration: underline;
+}
+body {
+    background-color: darkblue;
+    width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black
+}
+img {
+    outline: auto;
+    outline-color: yellow;
+    width: 400px;
+}
