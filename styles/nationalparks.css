@@ -15,6 +15,11 @@ p {
     text-align: center;
 }
 .name {
-    font-familY: Khand;
+    font-family: Khand;
     font-size: 20px;
+}
+.next {
+    text-align: center;
+    color: white;
+    background-color: rgb(96, 195, 235);
 }

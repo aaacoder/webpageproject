@@ -3,3 +3,55 @@ body {
     width: 600px;
     margin: 0 auto;
 }
+h1 {
+    font-family: Varela Round;
+    text-align: center;
+    font-size: 40px;
+    line-height: 0.25;
+}
+h2 {
+    font-family: Patrick Hand;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+    color: darkslategray;
+}
+.denali {
+    font-family: Questrial;
+    text-align: center;
+    color: aliceblue;
+    background-color: darkgreen;
+    padding: 3px;
+}
+.volcano {
+    font-family: Questrial;
+    text-align: center;
+    color: aliceblue;
+    background-color: maroon;
+    padding: 3px;
+}
+.rainier {
+    font-family: Questrial;
+    text-align: center;
+    color: aliceblue;
+    background-color: darkblue;
+    padding: 3px;
+}
+.olympic {
+    font-family: Questrial;
+    text-align: center;
+    color: aliceblue;
+    background-color: mediumaquamarine;
+    padding: 3px;
+}
+p {
+    font-family: Blinker;
+    text-align: justify;
+}
+.back {
+    font-family: Allan;
+    text-align: center;
+}
+img {
+    border-radius: 15%;
+}
