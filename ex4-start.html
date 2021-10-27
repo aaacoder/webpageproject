@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4 - Number List</title>
+
+    <style>
+        #countbox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        p {
+            border-radius: 5px;
+            border: 2px solid blue;
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            font-size: 24px;
+        }
+        .finished {
+            /*border-style: dashed;*/   /*easy to change CSS*/
+            border-color: red;
+            background-color: red;
+            /*text-decoration: line-through solid red;*/
+        }
+    </style>
+</head>
+<body>
+    <label>From:</label>
+    <input type="number" id="from" min=0 value=1>
+    <label>To:</label>
+    <input type="number" id="to" max=10000 value=100>
+    <label>Count By:</label>
+    <input type="number" id="countby" min=1 value=1>
+    <br>
+    <label>Click all elements that are multiples of:</label>
+    <input type="number" id="multiple" min=2 value=10>
+    <button>CREATE</button>
+    <hr>
+
+    <div id="countbox">
+    </div>
+    <script>
+        function createNumbers() {
+            let countbox = document.querySelector("div");
+            countbox.replaceChildren(); // removes all existing children
+            
+            // querySelect by id with the # sign (selectElementById)
+            let fromInput = document.querySelector("#from"); 
+            // Value is actually a string, code below converts to number
+            let from = Number(fromInput.value); 
+            let toInput = document.querySelector("#to");
+            let to = Number(toInput.value);
+            let countByInput = document.querySelector("#countby");
+            let countBy = Number(countByInput.value);
+
+            for (let i = from; i <= to; i += countBy) {
+                let numElm = document.createElement("p");
+                countbox.appendChild(numElm);
+                numElm.textContent = i;
+                numElm.addEventListener("click", crossOut);
+            }
+        }
+
+        let button = document.querySelector("button");
+        button.addEventListener("click", createNumbers);
+
+        function crossOut(event) {
+            let multipleInput = document.querySelector("#multiple");
+            let multiple = Number(multipleInput.value);
+        
+            let numElm = event.currentTarget; // event.currentTarget refers to what was clicked
+            if (numElm.textContent % multiple == 0) {
+                // Changing the style directly is not ideal
+                // numElm.style.textDecoration = "line-through";
+                // Better to change classes to affect styles
+                numElm.classList.add("finished");
+            }
+            else {
+                alert("That's not a multiple of " + multiple + "! Try again.");
+                createNumbers();
+            }
+        }
+
+    </script>
+</body>
+</html>
