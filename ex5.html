@@ -38,6 +38,8 @@
 </head>
 <body>
     <h1>Image gallery example</h1>
+    <label for="auto-advance">Auto Advance</label>
+    <input type="checkbox" name="auto-advance" id="auto-advance" checked=true>
 
     <div class="full-img">
       <img class="displayed-img" src="images/art.jpg">
@@ -66,12 +68,15 @@
         // Auto advancing
         let nextImageIndex = 0;
         let intervalId = window.setInterval(function() {
-            let bigImage = document.querySelector(".displayed-img");
-            let imageName = listOfImages[nextImageIndex];
-            bigImage.src = "images/" + imageName + ".jpg";
+            // Only auto advance if the checkbox is checked:
+            if (document.querySelector("#auto-advance").checked) {
+                let bigImage = document.querySelector(".displayed-img");
+                let imageName = listOfImages[nextImageIndex];
+                bigImage.src = "images/" + imageName + ".jpg";
 
-            // Advance to next image in list, unless you go over - then reset to 0
-            nextImageIndex = (nextImageIndex + 1) % listOfImages.length;
+                // Advance to next image in list, unless you go over - then reset to 0
+                nextImageIndex = (nextImageIndex + 1) % listOfImages.length;
+            }
 
         }, 3000);
 
@@ -80,9 +85,8 @@
             let bigImage = document.querySelector(".displayed-img");
             // event.CurrentTarget is whatever *child* element got clicked on
             bigImage.src = event.target.src;
-
             // STOP AUTO ADVANCING
-            window.clearInterval(intervalId);
+            document.querySelector("#auto-advance").checked = false;
         });
 
         // ALL THIS - BETTER DONE WITH THE CSS :hover pseudoselector
@@ -100,8 +104,6 @@
         window.setTimeout(function() {
             alert("BOO!");
         }, 5000); */
-
-
 
     </script>
 </body>
