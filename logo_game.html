@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Game</title>
+
+    <style>
+        h1, h3 {
+            text-align: center;
+        }
+        body {
+            width: 640px;
+            margin: 0 auto;
+        }
+        .logo-image {
+            display: block;
+            width: 640px;
+            height: 480px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logo Game</h1>
+    <h3>Click the letter buttons to fill in the correct name of the logo!</p>
+
+    <div class="logo-image">
+        <img src="images/logos/adobe.png"
+    </div>
+
+    <h3>What is this logo?</h3>
+    <br>
+    <input type="text">
+    
+    <p></p>
+    <br>
+    <button>Next</button>
+
+    <script>
+        let listofLogos = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner_bros"];    
+        let logoAnswers = ["Adobe", "Bic", "Dove", "Firefox", "Pepsi", "Target", "Warner Bros"];
+        let logoPic = document.querySelector(".logo-image");
+        let userAnswer = document.querySelector("input");
+        let index = 0;
+
+        while (index < listofLogos.length) {
+            let logoName = listofLogos[index];
+
+            if (index >= listofLogos.length) {
+                finishedGame();
+            }
+        }
+
+        function checkAnswer() {
+            let answerStatus = document.querySelector("p");
+
+            if (userAnswer.value === logoAnswers[index]) {
+                answerStatus.textContent = "Correct!"
+                answerStatus.style.color = "green";
+            }
+            else {
+                answerStatus.textContent = "Wrong.";
+                answerStatus.style.color = "red";
+            }
+            userAnswer.value = "";
+        }
+
+        function handleKeyUp(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        }
+
+        userAnswer.addEventListener("keyup", handleKeyUp);
+        userAnswer.focus();
+
+        let nextButton = document.querySelector("button");
+        nextButton.addEventListener("click", function(event) {
+            index++;
+            logoPic.src = "images/logos/" + listofLogos[index] + "png";
+        });
+
+        function finishedGame() {
+
+        }
+
+    </script>
+</body>
+</html>
