@@ -1,0 +1,18 @@
+h1, h3, h4, p {
+    text-align: center;
+}
+body {
+    width: 640px;
+    margin: 0 auto;
+}
+.logo-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 37%;
+}
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

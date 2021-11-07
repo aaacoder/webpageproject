@@ -6,58 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logo Game</title>
 
-    <style>
-        h1, h3 {
-            text-align: center;
-        }
-        body {
-            width: 640px;
-            margin: 0 auto;
-        }
-        .logo-image {
-            display: block;
-            width: 640px;
-            height: 480px;
-        }
-    </style>
+    <link href="styles/logo_game.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <h1>Logo Game</h1>
-    <h3>Click the letter buttons to fill in the correct name of the logo!</p>
+    <h3>Type in the correct name of the logo. Press enter to check your answer!</h3>
+    <br>
 
-    <div class="logo-image">
-        <img src="images/logos/adobe.png"
+    <div class="image-space">
+        <img class="logo-image" src="images/logos/adobe.png">
     </div>
 
-    <h3>What is this logo?</h3>
-    <br>
-    <input type="text">
-    
+    <h3 class="question">What is this logo?</h3>
+    <input id="input_field" class="center-block" type="text">
+
     <p></p>
-    <br>
-    <button>Next</button>
+    <button class="center-block">Next</button>
 
     <script>
         let listofLogos = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner_bros"];    
         let logoAnswers = ["Adobe", "Bic", "Dove", "Firefox", "Pepsi", "Target", "Warner Bros"];
+        
         let logoPic = document.querySelector(".logo-image");
         let userAnswer = document.querySelector("input");
         let index = 0;
+        let answerStatus = document.querySelector("p");
 
-        while (index < listofLogos.length) {
-            let logoName = listofLogos[index];
-
-            if (index >= listofLogos.length) {
-                finishedGame();
-            }
-        }
+        userAnswer.addEventListener("keyup", handleKeyUp);
+        userAnswer.focus();
 
         function checkAnswer() {
-            let answerStatus = document.querySelector("p");
-
             if (userAnswer.value === logoAnswers[index]) {
-                answerStatus.textContent = "Correct!"
+                answerStatus.textContent = "Correct!" + index;
                 answerStatus.style.color = "green";
+
+                userAnswer.setAttribute
+                nextButton.removeAttribute('disabled');
             }
             else {
                 answerStatus.textContent = "Wrong.";
@@ -72,17 +56,35 @@
             }
         }
 
-        userAnswer.addEventListener("keyup", handleKeyUp);
-        userAnswer.focus();
-
+        
         let nextButton = document.querySelector("button");
+        nextButton.setAttribute('disabled', true);
+
         nextButton.addEventListener("click", function(event) {
-            index++;
-            logoPic.src = "images/logos/" + listofLogos[index] + "png";
+            index += 1;
+            if (index >= listofLogos.length) {
+                finishedGame();
+            }
+
+            let logoPic = document.querySelector(".logo-image");
+            let logoName = listofLogos[index];
+            logoPic.src = "images/logos/" + logoName + ".png";
+
+            answerStatus.textContent = "";
+            userAnswer.focus();
+
+            nextButton.setAttribute('disabled', true);
         });
 
         function finishedGame() {
+            let logoPic = document.querySelector(".logo-image");
+            logoPic.src = "images/congratulations.jpg";
 
+            question.textContent = "You won!";
+            question.style.color = "lightblue";
+
+            document.getElementById("input_field").disabled = true;
+            nextButton.setAttribute('disabled', true);
         }
 
     </script>
