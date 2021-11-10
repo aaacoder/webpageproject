@@ -6,26 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logo Game</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&display=swap" rel="stylesheet">
+
     <link href="styles/logo_game.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Logo Game</h1>
-    <h3>Type in the correct name of the logo. Press enter to check your answer!</h3>
-    <br>
+    <div id="logo-game">
+        <h1>Logo Game</h1>
+        <h3 id="directions">Type in the correct name of the logo. Press enter to check your answer!</h3>
+        <br>
 
-    <div class="image-space">
         <img class="logo-image" src="images/logos/adobe.png">
+
+        <h4>What is this logo?</h4>
+        <input id="input-field" class="center-block" type="text">
+
+        <strong><p></p></strong>
+        <button id="next-button" class="next">Next</button>
     </div>
 
-    <h4>What is this logo?</h4>
-    <input class="center-block" type="text">
-
-    <p></p>
-    <button class="next">Next</button>
-
     <script>
-        let listofLogos = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner_bros"];
-        let logoAnswers = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner bros"];
+        let listofLogos = ["adobe", "bic", "dove", "firefox", "nike", "pepsi", "starbucks", "target", "warner_bros", "wikipedia"];
+        let logoAnswers = ["adobe", "bic", "dove", "firefox", "nike", "pepsi", "starbucks", "target", "warner bros", "wikipedia"];
         
         let logoPic = document.querySelector(".logo-image");
         let userAnswer = document.querySelector("input");
@@ -83,16 +88,21 @@
             let image = document.querySelector(".logo-image");
             image.src = "images/congratulations.jpg";
 
-            let directions = document.querySelector("h3");
-            directions.textContent = "Congratulations, you won!";
+            let directions = document.getElementById("directions");
+            directions.textContent = "You won!";
             directions.style.color = "blue";
 
             let question = document.querySelector("h4");
             question.textContent = "";
 
-            userAnswer.setAttribute('disabled', true);
+            let element = document.getElementById("logo-game");
+            let child1 = document.getElementById("input-field");
+            let child2 = document.getElementById("next-button");
+
+            element.removeChild(child1);
+            element.removeChild(child2);
+
             answerStatus.textContent = "";
-            nextButton.setAttribute('disabled', true);
         }
 
     </script>

@@ -2,8 +2,10 @@ h1, h3, h4, p {
     text-align: center;
 }
 body {
+    background-color: darkblue;
     width: 640px;
     margin: 0 auto;
+    padding: 50px;
 }
 .logo-image {
     display: block;
@@ -20,12 +22,25 @@ body {
     display: block;
     margin-right: auto;
     margin-left: auto;
+    font-family: Red Hat Display;
+    font-size: 15px;
     color: white;
     background-color: blue;
+    border-color: blue;
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 6px 16px;
+}
+.next:hover {
+    background-color: white;
+    color: blue;
 }
 .next:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+}
+#logo-game {
+    padding: 10px;
+    background-color: antiquewhite;
+    color: black;
+    font-family: Red Hat Display;
 }
