@@ -17,15 +17,15 @@
         <img class="logo-image" src="images/logos/adobe.png">
     </div>
 
-    <h3 class="question">What is this logo?</h3>
-    <input id="input_field" class="center-block" type="text">
+    <h4>What is this logo?</h4>
+    <input class="center-block" type="text">
 
     <p></p>
-    <button class="center-block">Next</button>
+    <button class="next">Next</button>
 
     <script>
-        let listofLogos = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner_bros"];    
-        let logoAnswers = ["Adobe", "Bic", "Dove", "Firefox", "Pepsi", "Target", "Warner Bros"];
+        let listofLogos = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner_bros"];
+        let logoAnswers = ["adobe", "bic", "dove", "firefox", "pepsi", "target", "warner bros"];
         
         let logoPic = document.querySelector(".logo-image");
         let userAnswer = document.querySelector("input");
@@ -36,11 +36,11 @@
         userAnswer.focus();
 
         function checkAnswer() {
-            if (userAnswer.value === logoAnswers[index]) {
-                answerStatus.textContent = "Correct!" + index;
+            if ((userAnswer.value).toLowerCase() === logoAnswers[index]) {
+                answerStatus.textContent = "Correct!";
                 answerStatus.style.color = "green";
 
-                userAnswer.setAttribute
+                userAnswer.setAttribute('disabled', true);
                 nextButton.removeAttribute('disabled');
             }
             else {
@@ -61,29 +61,37 @@
         nextButton.setAttribute('disabled', true);
 
         nextButton.addEventListener("click", function(event) {
-            index += 1;
-            if (index >= listofLogos.length) {
+            index++;
+
+            if (index < listofLogos.length) {
+                let logoPic = document.querySelector(".logo-image");
+                let logoName = listofLogos[index];
+                logoPic.src = "images/logos/" + logoName + ".png";
+
+                answerStatus.textContent = "";
+                userAnswer.removeAttribute('disabled');
+                userAnswer.focus();
+
+                nextButton.setAttribute('disabled', true);
+            }
+            else {
                 finishedGame();
             }
-
-            let logoPic = document.querySelector(".logo-image");
-            let logoName = listofLogos[index];
-            logoPic.src = "images/logos/" + logoName + ".png";
-
-            answerStatus.textContent = "";
-            userAnswer.focus();
-
-            nextButton.setAttribute('disabled', true);
         });
 
         function finishedGame() {
-            let logoPic = document.querySelector(".logo-image");
-            logoPic.src = "images/congratulations.jpg";
+            let image = document.querySelector(".logo-image");
+            image.src = "images/congratulations.jpg";
 
-            question.textContent = "You won!";
-            question.style.color = "lightblue";
+            let directions = document.querySelector("h3");
+            directions.textContent = "Congratulations, you won!";
+            directions.style.color = "blue";
 
-            document.getElementById("input_field").disabled = true;
+            let question = document.querySelector("h4");
+            question.textContent = "";
+
+            userAnswer.setAttribute('disabled', true);
+            answerStatus.textContent = "";
             nextButton.setAttribute('disabled', true);
         }
 
