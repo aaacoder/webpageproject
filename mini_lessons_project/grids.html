@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Examples</title>
+
+    <link href="styles/grids.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <h3>When the grid is initially created, it is set by default to one column.</h3>
+    <pre>
+        <code>
+            .grid-container1 {
+                display: grid;
+            }
+        </code>
+    </pre>
+    <div class="grid-container1">
+        <div class="item">Giraffe</div>
+        <div class="item">Tiger</div>
+        <div class="item">Eagle</div>
+        <div class="item">Alligator</div>
+        <div class="item">Salamander</div>
+        <div class="item">Hawk</div>
+    </div>
+    <br><br>
+
+    <h3>We can add columns to make it look more grid-like.</h3>
+    <pre>
+        <code>
+            .grid-container2 {
+                display: grid;
+                grid-template-columns: 100px 100px 100px;
+            }
+        </code>
+    </pre>
+    <div class="grid-container2">
+        <div class="item">Giraffe</div>
+        <div class="item">Tiger</div>
+        <div class="item">Eagle</div>
+        <div class="item">Alligator</div>
+        <div class="item">Salamander</div>
+        <div class="item">Hawk</div>
+    </div>
+    <br><br>
+
+    <h3>To create a flexible grid, we can use the <code>fr</code> unit, which will resize
+    the columns to fit proportionally based on the numbers given. The left column now has
+    most of the available space.</h3>
+    <pre>
+        <code>
+            .grid-container3 {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        </code>
+    </pre>
+    <div class="grid-container3">
+        <div class="item">Giraffe</div>
+        <div class="item">Tiger</div>
+        <div class="item">Eagle</div>
+        <div class="item">Alligator</div>
+        <div class="item">Salamander</div>
+        <div class="item">Hawk</div>
+    </div>
+    <br><br>
+
+    <h3>We can also add gaps using <code>row-gap</code> and <code>column-gap</code> for
+    rows and columns respectively. <code>gap</code> is used to affect both.</h3>
+        <pre>
+            <code>
+                .grid-container4 {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr 1fr;
+                    row-gap: 10px;
+                    column-gap: 20px;
+                }
+            </code>
+        </pre>
+        <div class="grid-container3">
+            <div class="item">Giraffe</div>
+            <div class="item">Tiger</div>
+            <div class="item">Eagle</div>
+            <div class="item">Alligator</div>
+            <div class="item">Salamander</div>
+            <div class="item">Hawk</div>
+        </div>
+        <br><br>
+</body>
+</html>
