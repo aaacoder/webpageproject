@@ -10,10 +10,12 @@
 
 </head>
 <body>
+    <h1>CSS Grid Layout Overview</h1>
+
     <h3>When the grid is initially created, it is set by default to one column.</h3>
     <pre>
         <code>
-            .grid-container1 {
+            .grid-container {
                 display: grid;
             }
         </code>
@@ -31,7 +33,7 @@
     <h3>We can add columns to make it look more grid-like.</h3>
     <pre>
         <code>
-            .grid-container2 {
+            .grid-container {
                 display: grid;
                 grid-template-columns: 100px 100px 100px;
             }
@@ -52,7 +54,7 @@
     most of the available space.</h3>
     <pre>
         <code>
-            .grid-container3 {
+            .grid-container {
                 display: grid;
                 grid-template-columns: 2fr 1fr 1fr;
             }
@@ -72,7 +74,7 @@
     rows and columns respectively. <code>gap</code> is used to affect both.</h3>
         <pre>
             <code>
-                .grid-container4 {
+                .grid-container {
                     display: grid;
                     grid-template-columns: 2fr 1fr 1fr;
                     row-gap: 10px;
@@ -80,7 +82,7 @@
                 }
             </code>
         </pre>
-        <div class="grid-container3">
+        <div class="grid-container4">
             <div class="item">Giraffe</div>
             <div class="item">Tiger</div>
             <div class="item">Eagle</div>
@@ -88,6 +90,49 @@
             <div class="item">Salamander</div>
             <div class="item">Hawk</div>
         </div>
+        <br><br>
+
+        <h3>Many different functions can be combined for more complex patterns. 
+            
+            Using the <code>repeat()</code> function to create multiple columns at once, 
+            the <code>minmax()</code> function to set a minimum size for columns, and
+            <code>auto-fill</code> to add a flexible number of columns, we can add as 
+            many columns as can fit on the given page.</h3>
+        <pre>
+            <code>
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, 400px);
+                    grid-auto-rows: 100px, auto;
+                }
+            </code>
+        </pre>
+        <div class="grid-container5">
+            <div class="item">Giraffe</div>
+            <div class="item">Tiger</div>
+            <div class="item">Eagle</div>
+            <div class="item">Alligator</div>
+            <div class="item">Salamander</div>
+            <div class="item">Hawk</div>
+        </div>
+        <br><br>
+
+        <h3>More notes on Grid Layout:</h3>
+        
+        <li>Implicit and explicit grids: The explicit grid is defined using -template
+            properties, like grid-template-columns, and the implicit is defined using
+            -auto properties, like grid-auto-columns.
+        </li>
+        
+        <li>Line-based placement: The lines in a grid start at 1, and can be specified
+            with properties such as <code>grid-column-start, grid-column-end,
+            grid-row-start, and grid-row-end.</code>
+        </li>
+
+        <li>Grid template areas: By renaming different elements of the grid with names
+            like header, sidebar, or footer, the need for line numbers is eliminated.
+        </li>
+
         <br><br>
 </body>
 </html>
